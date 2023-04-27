@@ -7,7 +7,7 @@ public class WriteInFile {
     public static void writeToFile(){
         HashMap<String, String> inputHashMap = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
-        int numPairs = 1;//it can work without the try catch block
+        int numPairs = 1;
         System.out.print("Enter the number of key-value pairs: ");
         boolean success = false;
         do {
@@ -21,9 +21,9 @@ public class WriteInFile {
         }while(!success);
 
         for (int i = 0; i < numPairs; i++) {
-            System.out.println("Enter key " + (i + 1) + ":");
+            System.out.print("Enter the word in english/spanish " + (i + 1) + ":");
             String key = scanner.nextLine();
-            System.out.println("Enter value " + (i + 1) + ":");
+            System.out.print("Enter the translation of the word " + (i + 1) + ":");
             String value = scanner.nextLine();
 
             inputHashMap.put(key, value);
