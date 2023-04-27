@@ -8,7 +8,7 @@ public class WriteInFile {
         HashMap<String, String> inputHashMap = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
         int numPairs = 1;
-        System.out.print("Enter the number of key-value pairs: ");
+        System.out.print("Enter the number of the words you would like to learn: ");
         boolean success = false;
         do {
             try {
