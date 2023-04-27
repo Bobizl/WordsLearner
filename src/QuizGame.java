@@ -11,7 +11,7 @@ public class QuizGame {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",", 2); // Replace "," with the delimiter used in your file
+                String[] parts = line.split(",", 2);
                 if (parts.length == 2) {
                     dictionary.put(parts[0].trim(), parts[1].trim());
                 }
