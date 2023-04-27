@@ -21,9 +21,9 @@ public class WriteInFile {
         }while(!success);
 
         for (int i = 0; i < numPairs; i++) {
-            System.out.print("Enter the word in english/spanish " + (i + 1) + ":");
+            System.out.print("Enter the [" + (i+1) + "] word in english: " );
             String key = scanner.nextLine();
-            System.out.print("Enter the translation of the word " + (i + 1) + ":");
+            System.out.print("Enter the translation of word number [" + (i+1) + "] in bulgarian: " );
             String value = scanner.nextLine();
 
             inputHashMap.put(key, value);
