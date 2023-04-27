@@ -11,7 +11,7 @@ public class QuizGame {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",", 2);
+                String[] parts = line.split("-", 2);
                 if (parts.length == 2) {
                     dictionary.put(parts[0].trim(), parts[1].trim());
                 }
@@ -36,6 +36,7 @@ public class QuizGame {
                 score++;
             } else {
                 System.out.println("Incorrect. The correct word is: " + key);
+
             }
         }
 
