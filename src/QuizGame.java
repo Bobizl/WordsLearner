@@ -38,7 +38,7 @@ public class QuizGame {
                 System.out.println("Incorrect. The correct word is: " + key);
             }
         }
-           System.out.println("tuk li sme");
+
         System.out.println("Your score: " + score + "/" + dictionary.size());
         scanner.close();
     }

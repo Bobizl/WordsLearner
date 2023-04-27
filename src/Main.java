@@ -7,13 +7,15 @@ public class Main {
     n.writeToFile();
     QuizGame quiz = new QuizGame();
     quiz.shuffle();
-        try {
+
+
+        /*try {
             ReadFile q = new ReadFile();
             q.readFromFile();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-
+*/
     }
 }
