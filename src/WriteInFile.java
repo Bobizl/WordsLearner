@@ -1,7 +1,5 @@
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class WriteInFile {
     public static void writeToFile(){
@@ -48,3 +46,10 @@ public class WriteInFile {
         writer.close();
     }
 }
+
+
+
+
+
+
+
