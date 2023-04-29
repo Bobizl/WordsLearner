@@ -10,9 +10,6 @@ public class UsersInput {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/competitors", "root" , "123456");
             Statement st = con.createStatement();
             ResultSet resultSet = st.executeQuery("select * from player");
-            while (resultSet.next()){
-                System.out.println(resultSet.getString("user_name"));
-            }System.out.println("Connection successful");
             System.out.print("Enter user name = ");
             String userName = sc.nextLine();
             System.out.print("Enter user age = ");
@@ -20,8 +17,9 @@ public class UsersInput {
 
             st.executeUpdate("insert into player values('"+userName+"', '"+userAge+"')" );
             System.out.println("Values inserted Successfully");
-
-
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("player"));
+            }
         }
         catch (Exception e) {
              e.printStackTrace();
