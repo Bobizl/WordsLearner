@@ -11,7 +11,7 @@ public class UsersInput {
 
         System.out.print("Enter your user ID: ");
         int userId = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
+        scanner.nextLine();
 
         System.out.print("Enter your name: ");
         String userName = scanner.nextLine();
