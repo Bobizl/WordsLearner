@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -34,12 +38,22 @@ public class QuizGame {
             if (userAnswer.equals(key)) {
                 System.out.println("Correct!");
                 score++;
+                String url = "jdbc:mysql://localhost:3306/competitors";
+                String user = "root";
+                String password = "123456";
+                String insertPointsQuery = String.format("UPDATE player SET User_points=%da WHERE User_id=1", score);
+                try (Connection connection = DriverManager.getConnection(url, user, password);
+                     PreparedStatement statement = connection.prepareStatement(insertPointsQuery)) {
+                     statement.executeUpdate();
+                } catch (SQLException e) {
+                    System.out.println("Error: " + e.getMessage());
+                    e.printStackTrace();
+                }
             } else {
                 System.out.println("Incorrect. The correct word is: " + key);
 
             }
         }
-
         System.out.println("Your score: " + score + "/" + dictionary.size());
         scanner.close();
     }

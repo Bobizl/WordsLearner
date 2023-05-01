@@ -9,35 +9,26 @@ public class UsersInput {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter your user ID: ");
-        int userId = scanner.nextInt();
-        scanner.nextLine();
-
         System.out.print("Enter your name: ");
         String userName = scanner.nextLine();
 
         System.out.print("Enter your age: ");
         String userAge = scanner.nextLine();
 
-        System.out.print("Enter your points: ");
-        String userPoints = scanner.nextLine();
-
-        addPlayerToDatabase(userId, userName, userAge, userPoints);
+        addPlayerToDatabase(userName, userAge);
     }
-    private static void addPlayerToDatabase(int userId, String userName, String userAge, String userPoints) {
+    private static void addPlayerToDatabase(String userName, String userAge) {
         String url = "jdbc:mysql://localhost:3306/competitors";
         String user = "root";
         String password = "123456";
 
-        String insertPlayerQuery = "INSERT INTO player (User_id, User_name, User_age, User_points) VALUES (?, ?, ?, ?)";
+        String insertPlayerQuery = "INSERT INTO player (User_name, User_age) VALUES (?, ?)";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(insertPlayerQuery)) {
 
-            statement.setInt(1, userId);
-            statement.setString(2, userName);
-            statement.setString(3, userAge);
-            statement.setString(4, userPoints);
+            statement.setString(1, userName);
+            statement.setString(2, userAge);
 
             int rowsInserted = statement.executeUpdate();
 
