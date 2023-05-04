@@ -19,4 +19,19 @@ public class ResetUserId {
             e.printStackTrace();
         }
     }
+    public static void deleteAll() {
+        String url = "jdbc:mysql://localhost:3306/competitors";
+        String user = "root";
+        String password = "123456";
+        String deleteAllPlayersQuery = "DELETE FROM player;";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(deleteAllPlayersQuery)) {
+            int rowsDeleted = statement.executeUpdate();
+            System.out.println(rowsDeleted + " rows have been deleted from the player table.");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

@@ -8,7 +8,8 @@ class Main {
 
         System.out.print("1. Input a user\n" + "2. Input words and their meanings\n" +
                 "3. See what words you have in yout Dictionary\n" +
-                "4. Play the game\n");
+                "4. Play the game\n" +
+                "5. Delete the rang list\n");
         System.out.print("Choose your option ");
         int options;
         options = menu.nextInt();
@@ -31,6 +32,11 @@ class Main {
                 case 4:
                     System.out.println(" Play the game ");
                     QuizGame.shuffle();
+                    break;
+                case 5:
+                    System.out.println(" Reset the rang list ");
+                    ResetUserId.deleteAll();
+                    ResetUserId.reset();
                     break;
             }
             while (options == 0) ;
