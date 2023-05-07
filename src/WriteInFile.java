@@ -2,6 +2,9 @@ import java.io.*;
 import java.util.*;
 
 public class WriteInFile {
+    public static void changeLanguage(){
+
+    }
     public static void writeToFile(){
         HashMap<String, String> inputHashMap = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
