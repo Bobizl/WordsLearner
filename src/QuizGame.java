@@ -80,5 +80,22 @@ public class QuizGame {
         return lastInsertedUserId;
     }
 
+    private static void updateScore(int lastInsertedUserId, int score) {
+        String insertPointsQuery = String.format("UPDATE player SET User_points=%d WHERE User_id=%d", score, lastInsertedUserId);
+        String url = "jdbc:mysql://localhost:3306/competitors";
+        String user = "root";
+        String password = "123456";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(insertPointsQuery)) {
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
+    private static void displayPlayerInfo(int lastInsertedUserId, int score, int totalWords) {
+        System.out.println("User_id for the current player: " + lastInsertedUserId);
+        System.out.println("Your score: " + score + "/" + totalWords);
+    }
 }
