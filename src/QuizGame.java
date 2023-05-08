@@ -46,5 +46,20 @@ public class QuizGame {
         return dictionary;
     }
 
+    private static List<String> shuffleKeys(HashMap<String, String> dictionary) {
+        List<String> shuffledKeys = new ArrayList<>(dictionary.keySet());
+        Collections.shuffle(shuffledKeys);
+        return shuffledKeys;
+    }
+
+    private static void displayMeaning(HashMap<String, String> dictionary, String key) {
+        System.out.println("What is the word for the following meaning?");
+        System.out.println(dictionary.get(key));
+    }
+
+    private static String getUserAnswer(Scanner scanner) {
+        return scanner.nextLine().toLowerCase();
+    }
+
 
 }
