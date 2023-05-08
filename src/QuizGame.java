@@ -29,5 +29,22 @@ public class QuizGame {
         scanner.close();
     }
 
+    private static HashMap<String, String> loadDictionaryFromFile(String fileName) {
+        HashMap<String, String> dictionary = new HashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("-", 2);
+                if (parts.length == 2) {
+                    dictionary.put(parts[0].trim(), parts[1].trim());
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            System.exit(1);
+        }
+        return dictionary;
+    }
+
 
 }
