@@ -61,5 +61,24 @@ public class QuizGame {
         return scanner.nextLine().toLowerCase();
     }
 
+    private static int getLastInsertedUserId() {
+        int lastInsertedUserId = -1;
+        String selectLastInsertedUserIdQuery = "SELECT MAX(User_id) AS LastUserId FROM player";
+        String url = "jdbc:mysql://localhost:3306/competitors";
+        String user = "root";
+        String password = "123456";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(selectLastInsertedUserIdQuery);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                lastInsertedUserId = resultSet.getInt("LastUserId");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return lastInsertedUserId;
+    }
+
 
 }
