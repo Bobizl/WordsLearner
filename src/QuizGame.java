@@ -22,11 +22,8 @@ public class QuizGame {
             } else {
                 System.out.println("Incorrect. The correct word is: " + key);
             }
-
             displayPlayerInfo(lastInsertedUserId, score, dictionary.size());
         }
-
-        scanner.close();
     }
 
     private static HashMap<String, String> loadDictionaryFromFile(String fileName) {

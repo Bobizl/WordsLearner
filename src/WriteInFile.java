@@ -2,10 +2,13 @@ import java.io.*;
 import java.util.*;
 
 public class WriteInFile {
-    public static void changeLanguage(){
+    private static boolean isEnglish = true;
 
+    public static void changeLanguage() {
+        isEnglish = !isEnglish;
     }
-    public static void writeToFile(){
+
+    public static void writeToFile() {
         HashMap<String, String> inputHashMap = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
         int numPairs = 1;
@@ -15,19 +18,22 @@ public class WriteInFile {
             try {
                 numPairs = Integer.parseInt(scanner.nextLine());
                 success = true;
-
             } catch (Exception e) {
                 System.out.println("Wrong ! Try again ");
             }
-        }while(!success);
+        } while (!success);
 
         for (int i = 0; i < numPairs; i++) {
-            System.out.print("Enter the [" + (i+1) + "] word in english: " );
-            String key = scanner.nextLine();
-            System.out.print("Enter the translation of word number [" + (i+1) + "] in bulgarian: " );
-            String value = scanner.nextLine();
+            System.out.print("Enter the [" + (i + 1) + "] word in " + (isEnglish ? "english" : "bulgarian") + ": ");
+            String firstWord = scanner.nextLine();
+            System.out.print("Enter the translation of word number [" + (i + 1) + "] in " + (isEnglish ? "bulgarian" : "english") + ": ");
+            String secondWord = scanner.nextLine();
 
-            inputHashMap.put(key, value);
+            if (isEnglish) {
+                inputHashMap.put(firstWord, secondWord);
+            } else {
+                inputHashMap.put(secondWord, firstWord);
+            }
         }
 
         String filePath = "Dictionary.txt";
@@ -40,7 +46,7 @@ public class WriteInFile {
     }
 
     public static void writeHashMapToFile(HashMap<String, String> inputHashMap, String filePath) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath,true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
 
         for (Map.Entry<String, String> entry : inputHashMap.entrySet()) {
             writer.write(entry.getKey() + " - " + entry.getValue());

@@ -11,14 +11,15 @@ import java.util.Scanner;
                         "3. See what words you have in your Dictionary\n" +
                         "4. Play the game\n" +
                         "5. Delete the rang list\n" +
-                        "6. Exit the program\n");
+                        "6. Change the language\n" +
+                        "7. Exit the program\n");
                 System.out.print("Choose your option: ");
                 if (scanner.hasNextLine()) {
                     input = scanner.nextLine();
                 } else {
                     break;
                 }
-                if (input.equals("6")) {
+                if (input.equals("7")) {
                     System.out.println(" The program is shutting down ");
                     break;
                 }
@@ -52,6 +53,12 @@ import java.util.Scanner;
                         System.out.println("Reset the rang list");
                         ResetUserId.deleteAll();
                         ResetUserId.reset();
+                        System.out.println();
+                        break;
+
+                    case "6":
+                        System.out.println("Changing language direction");
+                        WriteInFile.changeLanguage();
                         System.out.println();
                         break;
 
